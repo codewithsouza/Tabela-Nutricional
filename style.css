@@ -293,6 +293,12 @@ body {
     display: inline-flex !important;
 }
 
+.validade-sodio {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
 @media (max-width: 1300px) {
     .rotulo-container {
         width: 98vw;

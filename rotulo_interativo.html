@@ -17,28 +17,7 @@
             <div class="card">
                 <div class="top-bar">
                     <span class="industria-brasileira">Indústria Brasileira</span>
-                    <span class="selo-alto-sodio" id="seloAltoSodio">
-                        <div class="sodio-selo-wrapper pequeno" style="height:22px;min-width:60px;border-width:1.5px;">
-                            <span class="sodio-lupa" style="width:18px;height:22px;border-right:1.5px solid #000;display:flex;align-items:center;justify-content:center;">
-                                <svg width="14" height="14" viewBox="0 0 22 22">
-                                    <circle cx="10" cy="10" r="7" stroke="black" stroke-width="2" fill="white"/>
-                                    <rect x="15" y="15" width="5" height="2" rx="1" fill="black" transform="rotate(45 15 15)"/>
-                                    <circle cx="10" cy="10" r="3" fill="white" stroke="black"/>
-                                </svg>
-                            </span>
-                            <span class="sodio-altoem" style="font-size:11px;height:22px;padding:0 4px 0 2px;font-family:Arial,sans-serif;font-weight:bold;color:#000;display:flex;align-items:center;">ALTO EM</span>
-                            <span class="sodio-sodio" style="font-size:12px;height:22px;padding:0 8px;font-family:Arial,sans-serif;font-weight:bold;color:#fff;background:#000;display:flex;align-items:center;">SÓDIO</span>
-                        </div>
-                    </span>
-                    <span class="sodio-selo-png" style="display:none">
-                        <div style="display:inline-flex;align-items:center;height:12px;min-width:40px;border:1px solid #000;border-radius:4px;background:#fff;margin-left:8px;">
-                            <span style="display:flex;align-items:center;justify-content:center;width:10px;height:12px;border-right:1px solid #000;">
-                                <svg width="6" height="6" viewBox="0 0 22 22"><circle cx="10" cy="10" r="7" stroke="black" stroke-width="2" fill="white"/><rect x="15" y="15" width="5" height="2" rx="1" fill="black" transform="rotate(45 15 15)"/><circle cx="10" cy="10" r="3" fill="white" stroke="black"/></svg>
-                            </span>
-                            <span style="font-size:6px;height:12px;padding:0 2px 0 1px;font-family:Arial,sans-serif;font-weight:bold;color:#000;">ALTO EM</span>
-                            <span style="font-size:7px;height:12px;padding:0 4px;font-family:Arial,sans-serif;font-weight:bold;color:#fff;background:#000;">SÓDIO</span>
-                        </div>
-                    </span>
+                    
                 </div>
                 <div class="titulo-prato">
                     <input type="text" value="Escondidinho">
@@ -142,12 +121,27 @@
                 <div class="ingredientes">
                     <strong>Ingredientes:</strong><br>
                     <input type="text" value="Purê de mandioca, carne seca, parmesão, alho, especiarias e sal."><br><br>
-                    <strong>Não contém glúten.</strong><br><br>
+                    <input type="text" value="Não contém glúten." style="font-weight:bold; width: 100%; background: transparent; border: none; color: #333; font-size: 12px;"><br><br>
                     <strong>ALÉRGICOS:</strong><br>
                     <input type="text" value="Contém derivados de leite, de soja. Pode conter trigo e ovos.">
                 </div>
-                <div class="validade">
-                    <input type="text" value="Validade: 11/2021">
+                <div class="validade-sodio" style="display: flex; align-items: center; gap: 10px;">
+                    <div class="validade">
+                        <input type="text" value="Validade: 11/2021">
+                    </div>
+                    <span class="selo-alto-sodio" id="seloAltoSodio">
+                        <div class="sodio-selo-wrapper pequeno" style="height:22px;min-width:60px;border-width:1.5px;">
+                            <span class="sodio-lupa" style="width:18px;height:22px;border-right:1.5px solid #000;display:flex;align-items:center;justify-content:center;">
+                                <svg width="14" height="14" viewBox="0 0 22 22">
+                                    <circle cx="10" cy="10" r="7" stroke="black" stroke-width="2" fill="white"/>
+                                    <rect x="15" y="15" width="5" height="2" rx="1" fill="black" transform="rotate(45 15 15)"/>
+                                    <circle cx="10" cy="10" r="3" fill="white" stroke="black"/>
+                                </svg>
+                            </span>
+                            <span class="sodio-altoem" style="font-size:11px;height:22px;padding:0 4px 0 2px;font-family:Arial,sans-serif;font-weight:bold;color:#000;display:flex;align-items:center;">ALTO EM</span>
+                            <span class="sodio-sodio" style="font-size:12px;height:22px;padding:0 8px;font-family:Arial,sans-serif;font-weight:bold;color:#fff;background:#000;display:flex;align-items:center;">SÓDIO</span>
+                        </div>
+                    </span>
                 </div>
             </div>
         </div>

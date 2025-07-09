@@ -1,0 +1,41 @@
+✨ Funcionalidades
+Adicionar alimentos e suas informações nutricionais (calorias, proteínas, carboidratos, gorduras etc.)
+
+Exibir os dados em uma tabela organizada
+
+Editar ou remover alimentos da tabela
+
+Cálculo automático dos totais nutricionais
+
+📁 Estrutura do Projeto
+bash
+Copiar
+Editar
+/nutritional-table
+│
+├── rotulo_interativo.html         
+├── style.css         
+└── script.js     
+🚀 Como usar
+Clone ou baixe este repositório:
+
+bash
+Copiar
+Editar
+git clone https://github.com/seu-usuario/nutritional-table.git
+Abra o arquivo index.html diretamente no navegador.
+
+Use os campos do formulário para inserir os dados nutricionais e clique em Adicionar para incluí-los na tabela.
+
+🔧 Tecnologias
+HTML5
+
+CSS3
+
+JavaScript (Vanilla)
+
+📌 Observações
+Este projeto não utiliza nenhum framework ou biblioteca externa.
+
+Os dados são armazenados apenas em memória (não persistem após atualizar a página).
+

@@ -1,0 +1,344 @@
+body {
+            background-color: #f0f2f5;
+            color: #333;
+            font-family: "Segoe UI", sans-serif;
+            padding: 40px 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        .preview-wrapper {
+            overflow-x: auto;
+            padding: 24px 0;
+            width: 100vw;
+            display: flex;
+            justify-content: center;
+        }
+
+        .rotulo-container {
+            display: flex;
+            gap: 24px;
+            flex-wrap: wrap;
+            width: 1200px;
+            max-width: 98vw;
+            box-sizing: border-box;
+            border: 1.5px solid #1f0505;
+            padding: 32px 24px;
+            background-color: #fff;
+            border-radius: 18px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.10);
+            align-items: stretch;
+            justify-content: center;
+            transition: box-shadow 0.2s;
+        }
+
+
+        .card {
+            border: 1.5px solid #ddd;
+            padding: 18px 14px;
+            flex: 1 1 320px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            font-size: 14px;
+            box-sizing: border-box;
+            border-radius: 12px;
+            background-color: #fafafa;
+            min-width: 300px;
+            max-width: 370px;
+            margin: 0 4px;
+            box-shadow: 0 2px 8px #0001;
+        }
+
+        .titulo-prato {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-bottom: 2px;
+        }
+
+        .industria-brasileira {
+            text-align: center;
+            font-size: 22px;
+            font-family: 'Segoe UI', sans-serif;
+            margin-bottom: 6px;
+            font-weight: 400;
+        }
+
+        .selo-alto-sodio {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+
+        .titulo-prato input {
+            font-family: 'Great Vibes', cursive;
+            font-size: clamp(38px, 7vw, 68px);
+            text-align: center;
+            background-color: transparent;
+            border: none;
+            color: #111;
+            line-height: 1.1;
+            padding: 0;
+            margin: 0 auto;
+            text-shadow: 2px 2px 6px #fff, 0 0 2px #111;
+            max-width: 100%;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .subtitulo input {
+            font-family: 'Great Vibes', cursive;
+            font-size: clamp(22px, 3vw, 38px);
+            font-style: italic;
+            text-align: center;
+            background-color: transparent;
+            color: #111;
+            border: none;
+            margin: 0;
+            padding: 0;
+            text-shadow: 2px 2px 6px #fff, 0 0 2px #111;
+        }
+
+        .info-geral input {
+            font-size: 14px;
+            width: 100%;
+            margin-bottom: 4px;
+            background-color: transparent;
+            color: #333;
+            border: none;
+        }
+
+        table {
+            width: 100%;
+            table-layout: auto;
+            word-break: break-word;
+            white-space: normal;
+            border-collapse: collapse;
+            font-size: 15px;
+            margin-left: 0;
+            margin-top: 8px;
+        }
+
+        th,
+        td {
+            border: 1px solid #bbb;
+            padding: 6px 4px;
+            text-align: left;
+        }
+
+        input[type="text"] {
+            width: 100%;
+            padding: 4px 2px;
+            background-color: transparent;
+            border: none;
+            color: #333;
+            font-size: 15px;
+            box-sizing: border-box;
+        }
+
+        .info-extra input {
+            font-size: 12px;
+            width: 100%;
+            background-color: transparent;
+            color: #777;
+            border: none;
+        }
+
+        .ingredientes input {
+            font-size: 12px;
+            width: 100%;
+            background-color: transparent;
+            color: #333;
+            border: none;
+        }
+
+        .validade input {
+            font-size: 14px;
+            font-weight: bold;
+            width: 100%;
+            background-color: transparent;
+            color: #000;
+            border: none;
+        }
+
+        .light-mode {
+            background-color: black !important;
+            color: white !important;
+            border-radius: 0 !important;
+            box-shadow: none !important;
+        }
+
+        .light-mode .card {
+            border-color: white !important;
+            background-color: black !important;
+        }
+
+        .light-mode th,
+        .light-mode td {
+            border-color: white !important;
+        }
+
+        .light-mode input[type="text"] {
+            color: white !important;
+            background-color: black !important;
+            border: 1px solid #fff !important;
+        }
+
+        button {
+            margin-top: 20px;
+            padding: 10px 16px;
+            background-color: #0d6efd;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 14px;
+        }
+
+        button:hover {
+            background-color: #0b5ed7;
+        }
+
+        .card:nth-child(2) {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .card:nth-child(2) table {
+            flex-grow: 1;
+        }
+
+        .rotulo-container .card:nth-child(1) {
+            flex: 1.2;
+        }
+
+        .rotulo-container .card:nth-child(2) {
+            flex: 1.9;
+        }
+
+        .rotulo-container .card:nth-child(3) {
+            flex: 1;
+        }
+
+        textarea {
+            font-size: 8px;
+            font-family: inherit;
+            width: 100%;
+            background-color: transparent;
+            color: #333;
+            border: none;
+            resize: none;
+            overflow: hidden;
+        }
+        .card:nth-child(2) input[type="text"] {
+            font-weight: bold;
+        }
+
+.sodio-selo-wrapper {
+    display: flex;
+    align-items: center;
+    border: 2px solid #000;
+    border-radius: 7px;
+    overflow: hidden;
+    background: #fff;
+    height: 38px;
+    min-width: 190px;
+    box-shadow: 0 1px 2px #0001;
+}
+.sodio-lupa {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #fff;
+    border-right: 2px solid #000;
+    height: 38px;
+    width: 44px;
+    padding-left: 4px;
+}
+.sodio-altoem {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: Arial, sans-serif;
+    font-size: 15px;
+    font-weight: bold;
+    color: #000;
+    background: #fff;
+    height: 38px;
+    padding: 0 10px 0 2px;
+    letter-spacing: 0.5px;
+}
+.sodio-sodio {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: Arial, sans-serif;
+    font-size: 18px;
+    font-weight: bold;
+    color: #fff;
+    background: #000;
+    height: 38px;
+    padding: 0 20px;
+    letter-spacing: 1px;
+}
+.sodio-png-scale {
+    transform: scale(0.3) !important;
+    transform-origin: left center !important;
+    margin-left: 10px !important;
+    display: inline-flex !important;
+}
+
+@media (max-width: 1300px) {
+    .rotulo-container {
+        width: 98vw;
+        padding: 18px 2vw;
+        gap: 12px;
+    }
+    .card {
+        min-width: 220px;
+        max-width: 98vw;
+        padding: 10px 4px;
+    }
+}
+
+@media (max-width: 900px) {
+    .rotulo-container {
+        flex-direction: column;
+        align-items: center;
+        width: 99vw;
+        padding: 8px 0;
+    }
+    .card {
+        min-width: 180px;
+        max-width: 99vw;
+        margin-bottom: 12px;
+    }
+}
+
+@media (max-width: 600px) {
+    .rotulo-container {
+        padding: 2vw 0;
+        gap: 6px;
+    }
+    .card {
+        padding: 6px 2px;
+        font-size: 12px;
+    }
+    .titulo-prato input {
+        font-size: clamp(22px, 8vw, 38px);
+    }
+    .subtitulo input {
+        font-size: clamp(14px, 4vw, 22px);
+    }
+    table {
+        font-size: 11px;
+    }
+    input[type="text"] {
+        font-size: 11px;
+    }
+}

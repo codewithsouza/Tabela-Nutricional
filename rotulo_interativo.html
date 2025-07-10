@@ -5,27 +5,352 @@
     <meta charset="UTF-8">
     <title>Rótulo Interativo</title>
     <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet">
-    <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
-    <link rel="stylesheet" href="style.css">
-    <script src="script.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <style>
+        body {
+            background-color: #f0f2f5;
+            color: #333;
+            font-family: "Segoe UI", sans-serif;
+            padding: 40px 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        .preview-wrapper {
+            overflow-x: auto;
+            padding: 24px 0;
+            width: 100vw;
+            display: flex;
+            justify-content: center;
+        }
+
+        .rotulo-container {
+            display: flex;
+            gap: 24px;
+            flex-wrap: wrap;
+            width: 1200px;
+            max-width: 98vw;
+            box-sizing: border-box;
+            border: 1.5px solid #1f0505;
+            padding: 32px 24px;
+            background-color: #fff;
+            border-radius: 18px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.10);
+            align-items: stretch;
+            justify-content: center;
+            transition: box-shadow 0.2s;
+        }
+
+        .card {
+            border: 1.5px solid #ddd;
+            padding: 18px 14px;
+            flex: 1 1 320px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            font-size: 14px;
+            box-sizing: border-box;
+            border-radius: 12px;
+            background-color: #fafafa;
+            min-width: 300px;
+            max-width: 370px;
+            margin: 0 4px;
+            box-shadow: 0 2px 8px #0001;
+        }
+
+        .titulo-prato {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-bottom: 2px;
+        }
+
+        .titulo-prato input {
+            font-family: 'Great Vibes', cursive;
+            font-size: clamp(38px, 7vw, 68px);
+            text-align: center;
+            background-color: transparent;
+            border: none;
+            color: #111;
+            line-height: 1.1;
+            padding: 0;
+            margin: 0 auto;
+            text-shadow: 2px 2px 6px #fff, 0 0 2px #111;
+            max-width: 100%;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .subtitulo input {
+            font-family: 'Great Vibes', cursive;
+            font-size: clamp(22px, 3vw, 38px);
+            font-style: italic;
+            text-align: center;
+            background-color: transparent;
+            color: #111;
+            border: none;
+            margin: 0;
+            padding: 0;
+            text-shadow: 2px 2px 6px #fff, 0 0 2px #111;
+        }
+
+        .info-geral input {
+            font-size: 14px;
+            width: 100%;
+            margin-bottom: 4px;
+            background-color: transparent;
+            color: #333;
+            border: none;
+        }
+
+        table {
+            width: 100%;
+            table-layout: auto;
+            word-break: break-word;
+            white-space: normal;
+            border-collapse: collapse;
+            font-size: 15px;
+            margin-left: 0;
+            margin-top: 8px;
+            background-color: #fff;
+        }
+
+        th, td {
+            border: 1px solid #000;
+            padding: 6px 4px;
+            text-align: center;
+            background-color: #fff;
+            color: #000;
+        }
+
+        th {
+            font-weight: bold;
+        }
+
+        input[type="text"] {
+            width: 100%;
+            padding: 4px 2px;
+            background-color: transparent;
+            border: none;
+            color: #333;
+            font-size: 15px;
+            box-sizing: border-box;
+        }
+
+        .info-extra input {
+            font-size: 12px;
+            width: 100%;
+            background-color: transparent;
+            color: #777;
+            border: none;
+        }
+
+        .ingredientes input {
+            font-size: 12px;
+            width: 100%;
+            background-color: transparent;
+            color: #333;
+            border: none;
+        }
+
+        .validade input {
+            font-size: 14px;
+            font-weight: bold;
+            width: 100%;
+            background-color: transparent;
+            color: #000;
+            border: none;
+        }
+
+        .card:nth-child(2) input[type="text"] {
+            font-weight: bold;
+        }
+
+        .sodio-selo-wrapper {
+            display: flex;
+            align-items: center;
+            border: 2px solid #000;
+            border-radius: 7px;
+            overflow: hidden;
+            background: #fff;
+            height: 19px;
+            min-width: 95px;
+            box-shadow: 0 1px 2px #0001;
+        }
+
+        .sodio-lupa {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #fff;
+            border-right: 2px solid #000;
+            height: 19px;
+            width: 22px;
+            padding-left: 2px;
+        }
+
+        .sodio-altoem {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: Arial, sans-serif;
+            font-size: 7px;
+            font-weight: bold;
+            color: #000;
+            background: #fff;
+            height: 19px;
+            padding: 0 5px 0 1px;
+            letter-spacing: 0.2px;
+        }
+
+        .sodio-sodio {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: Arial, sans-serif;
+            font-size: 9px;
+            font-weight: bold;
+            color: #fff;
+            background: #000;
+            height: 19px;
+            padding: 0 10px;
+            letter-spacing: 0.5px;
+        }
+
+        .validade-sodio {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .selo-alto-sodio {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+
+        button {
+            margin-top: 20px;
+            padding: 10px 16px;
+            background-color: #0d6efd;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 14px;
+        }
+
+        button:hover {
+            background-color: #0b5ed7;
+        }
+
+        .toggle-sodio {
+            margin-top: 10px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .toggle-sodio input {
+            width: auto;
+        }
+
+        .toggle-sodio label {
+            color: #333;
+            font-size: 14px;
+        }
+
+        .rotulo-container .card:nth-child(1) {
+            flex: 1.2;
+        }
+
+        .rotulo-container .card:nth-child(2) {
+            flex: 1.9;
+        }
+
+        .rotulo-container .card:nth-child(3) {
+            flex: 1;
+        }
+
+        @media (max-width: 1300px) {
+            .rotulo-container {
+                width: 98vw;
+                padding: 18px 2vw;
+                gap: 12px;
+            }
+            .card {
+                min-width: 220px;
+                max-width: 98vw;
+                padding: 10px 4px;
+            }
+        }
+
+        @media (max-width: 900px) {
+            .rotulo-container {
+                flex-direction: column;
+                align-items: center;
+                width: 99vw;
+                padding: 8px 0;
+            }
+            .card {
+                min-width: 180px;
+                max-width: 99vw;
+                margin-bottom: 12px;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .rotulo-container {
+                padding: 2vw 0;
+                gap: 6px;
+            }
+            .card {
+                padding: 6px 2px;
+                font-size: 12px;
+            }
+            .titulo-prato input {
+                font-size: clamp(22px, 8vw, 38px);
+            }
+            .subtitulo input {
+                font-size: clamp(14px, 4vw, 22px);
+            }
+            table {
+                font-size: 11px;
+            }
+            input[type="text"] {
+                font-size: 11px;
+            }
+        }
+    </style>
 </head>
 
 <body>
-
     <div class="preview-wrapper">
         <div class="rotulo-container" id="rotulo">
             <div class="card">
-                <div class="top-bar">
-                    
-                </div>
                 <div class="titulo-prato">
                     <input type="text" value="Escondidinho">
                 </div>
                 <div class="subtitulo">
                     <input type="text" value="Carne seca">
                 </div>
-                <span class="industria-brasileira" style="font-size: 14px; display: block; text-align: center; margin-bottom: 4px;">Indústria Brasileira</span>
                 <div class="info-geral">
+                    <span class="selo-alto-sodio" id="seloAltoSodio">
+                        <div class="sodio-selo-wrapper">
+                            <span class="sodio-lupa">
+                                <svg width="11" height="11" viewBox="0 0 22 22">
+                                    <circle cx="10" cy="10" r="7" stroke="black" stroke-width="2" fill="white"/>
+                                    <rect x="15" y="15" width="5" height="2" rx="1" fill="black" transform="rotate(45 15 15)"/>
+                                    <circle cx="10" cy="10" r="3" fill="white" stroke="black"/>
+                                </svg>
+                            </span>
+                            <span class="sodio-altoem">ALTO EM</span>
+                            <span class="sodio-sodio">SÓDIO</span>
+                        </div>
+                    </span>
                     <input type="text" value="Peso líquido: 600g">
                     <input type="text" value="Preparo: Micro-ondas 12 a 14 min">
                     <input type="text" value="Forno: 25 a 30 min">
@@ -33,17 +358,17 @@
             </div>
 
             <div class="card">
-                <div style="font-weight: bold; font-size: 9px;">
-                    <input type="text" value="INFORMAÇÃO NUTRICIONAL">
+                <div style="font-weight: bold; font-size: 22px; margin-bottom: 8px;">
+                    <input type="text" value="INFORMAÇÃO NUTRICIONAL" style="font-size: 22px; font-weight: bold;">
                 </div>
-                <div style="font-size: 9px; margin-bottom: 2px;">
-                    <input type="text" value="Porção por embalagem: 2">
-                    <input type="text" value="Porção: 300g (meia unidade)">
+                <div style="font-size: 12px; margin-bottom: 8px;">
+                    <input type="text" value="Porção por embalagem: 2" style="font-size: 12px;">
+                    <input type="text" value="Porção: 300g (meia unidade)" style="font-size: 12px;">
                 </div>
                 <table>
                     <thead>
                         <tr>
-                            <th>Componente</th>
+                            <th></th>
                             <th>100 g</th>
                             <th>300 g</th>
                             <th>%VD*</th>
@@ -112,8 +437,8 @@
                         </tr>
                     </tbody>
                 </table>
-                <div class="info-extra">
-                    <input type="text" value="*Porcentagem de valores diários fornecidos pela porção.">
+                <div class="info-extra" style="margin-top: 8px;">
+                    <input type="text" value="*Porcentagem de valores diários fornecidos pela porção." style="font-size: 11px; color: #666;">
                 </div>
             </div>
 
@@ -121,27 +446,14 @@
                 <div class="ingredientes">
                     <strong>Ingredientes:</strong><br>
                     <input type="text" value="Purê de mandioca, carne seca, parmesão, alho, especiarias e sal."><br><br>
-                    <input type="text" value="Não contém glúten." style="font-weight:bold; width: 100%; background: transparent; border: none; color: #333; font-size: 12px;"><br><br>
+                    <input type="text" value="Não contém glúten." style="font-weight:bold;"><br><br>
                     <strong>ALÉRGICOS:</strong><br>
                     <input type="text" value="Contém derivados de leite, de soja. Pode conter trigo e ovos.">
                 </div>
-                <div class="validade-sodio" style="display: flex; align-items: center; gap: 10px;">
+                <div class="validade-sodio">
                     <div class="validade">
                         <input type="text" value="Validade: 11/2021">
                     </div>
-                    <span class="selo-alto-sodio" id="seloAltoSodio">
-                        <div class="sodio-selo-wrapper pequeno" style="height:22px;min-width:60px;border-width:1.5px;">
-                            <span class="sodio-lupa" style="width:18px;height:22px;border-right:1.5px solid #000;display:flex;align-items:center;justify-content:center;">
-                                <svg width="14" height="14" viewBox="0 0 22 22">
-                                    <circle cx="10" cy="10" r="7" stroke="black" stroke-width="2" fill="white"/>
-                                    <rect x="15" y="15" width="5" height="2" rx="1" fill="black" transform="rotate(45 15 15)"/>
-                                    <circle cx="10" cy="10" r="3" fill="white" stroke="black"/>
-                                </svg>
-                            </span>
-                            <span class="sodio-altoem" style="font-size:11px;height:22px;padding:0 4px 0 2px;font-family:Arial,sans-serif;font-weight:bold;color:#000;display:flex;align-items:center;">ALTO EM</span>
-                            <span class="sodio-sodio" style="font-size:12px;height:22px;padding:0 8px;font-family:Arial,sans-serif;font-weight:bold;color:#fff;background:#000;display:flex;align-items:center;">SÓDIO</span>
-                        </div>
-                    </span>
                 </div>
             </div>
         </div>
@@ -155,96 +467,127 @@
     </div>
 
     <script>
-    // Controle do selo ALTO EM SÓDIO
-    document.addEventListener('DOMContentLoaded', function() {
-        const checkbox = document.getElementById('toggleSodio');
-        const selo = document.getElementById('seloAltoSodio');
-        checkbox.addEventListener('change', function() {
-            selo.style.display = this.checked ? 'inline-flex' : 'none';
+        // Controle do selo ALTO EM SÓDIO
+        document.addEventListener('DOMContentLoaded', function() {
+            const checkbox = document.getElementById('toggleSodio');
+            const selo = document.getElementById('seloAltoSodio');
+            checkbox.addEventListener('change', function() {
+                selo.style.display = this.checked ? 'inline-flex' : 'none';
+            });
+            selo.style.display = checkbox.checked ? 'inline-flex' : 'none';
         });
-        selo.style.display = checkbox.checked ? 'inline-flex' : 'none';
-    });
-    function baixarRotulo() {
-        const original = document.getElementById('rotulo');
-        const clone = original.cloneNode(true);
-        clone.classList.add('light-mode');
 
-        // Oculta o selo no PNG se o checkbox estiver desmarcado
-        const showSodio = document.getElementById('toggleSodio').checked;
-        const cloneSelo = clone.querySelector('#seloAltoSodio');
-        if (cloneSelo) cloneSelo.style.display = showSodio ? 'inline-flex' : 'none';
-       
-        clone.querySelectorAll('input[type="text"]').forEach(input => {
-            const span = document.createElement('span');
-            const style = window.getComputedStyle(input);
-            span.innerText = input.value;
-            span.style.fontFamily = style.fontFamily;
-            span.style.fontSize = style.fontSize;
-            span.style.fontWeight = style.fontWeight;
-            span.style.color = "#fff"; 
-            span.style.textAlign = style.textAlign;
-            span.style.display = "inline-block";
+        function baixarRotulo() {
+            const original = document.getElementById('rotulo');
+            const clone = original.cloneNode(true);
 
-            if (input.parentElement.classList.contains('titulo-prato')) {
-                span.style.fontSize = '64px';
-                span.style.marginBottom = '2px';
-                span.style.fontFamily = "'Great Vibes', cursive";
-                span.style.color = '#fff';
-                span.style.textShadow = '2px 2px 6px #000, 0 0 2px #fff';
-            } else if (input.parentElement.classList.contains('subtitulo')) {
-                span.style.fontSize = '32px';
-                span.style.fontFamily = "'Great Vibes', cursive";
-                span.style.color = '#fff';
-                span.style.textShadow = '2px 2px 6px #000, 0 0 2px #fff';
+            // Controla a exibição do selo no PNG
+            const showSodio = document.getElementById('toggleSodio').checked;
+            const cloneSelo = clone.querySelector('#seloAltoSodio');
+            if (cloneSelo) {
+                cloneSelo.style.display = showSodio ? 'inline-flex' : 'none';
             }
 
-            input.parentNode.replaceChild(span, input);
-        });
+            // Substitui todos os inputs por spans com o valor
+            clone.querySelectorAll('input[type="text"]').forEach(input => {
+                const span = document.createElement('span');
+                const style = window.getComputedStyle(input);
+                
+                span.textContent = input.value;
+                span.style.fontFamily = style.fontFamily;
+                span.style.fontSize = style.fontSize;
+                span.style.fontWeight = style.fontWeight;
+                span.style.color = '#000';
+                span.style.textAlign = style.textAlign;
+                span.style.display = 'inline-block';
+                span.style.width = '100%';
+                span.style.background = '#fff';
 
-    
-        clone.querySelectorAll('textarea').forEach(textarea => {
-            const span = document.createElement('span');
-            const style = window.getComputedStyle(textarea);
-            span.innerHTML = textarea.value.replace(/\n/g, '<br>');
-            span.style.fontFamily = style.fontFamily;
-            span.style.fontSize = style.fontSize;
-            span.style.fontWeight = style.fontWeight;
-            span.style.color = "#fff";
-            span.style.textAlign = style.textAlign;
-            span.style.display = "inline-block";
-            textarea.parentNode.replaceChild(span, textarea);
-        });
+                // Estilos específicos para títulos
+                if (input.parentElement.classList.contains('titulo-prato')) {
+                    span.style.fontSize = '64px';
+                    span.style.fontFamily = "'Great Vibes', cursive";
+                    span.style.color = '#000';
+                    span.style.textAlign = 'center';
+                    span.style.textShadow = 'none';
+                } else if (input.parentElement.classList.contains('subtitulo')) {
+                    span.style.fontSize = '32px';
+                    span.style.fontFamily = "'Great Vibes', cursive";
+                    span.style.color = '#000';
+                    span.style.textAlign = 'center';
+                    span.style.textShadow = 'none';
+                }
 
-        
-        clone.querySelectorAll('td, th').forEach(cell => {
-            cell.style.color = '#fff';
-            cell.style.fontWeight = 'bold';
-        });
-
-        const wrapper = document.createElement('div');
-        wrapper.style.position = 'fixed';
-        wrapper.style.top = '-10000px';
-        wrapper.style.left = '0';
-        wrapper.style.backgroundColor = 'transparent';
-        wrapper.appendChild(clone);
-        document.body.appendChild(wrapper);
-
-        document.fonts.ready.then(() => {
-            html2canvas(clone, {
-                backgroundColor: null, 
-                scale: 2,
-                scrollY: 0,
-                scrollX: 0,
-                useCORS: true
-            }).then(canvas => {
-                const link = document.createElement('a');
-                link.download = 'rotulo.png';
-                link.href = canvas.toDataURL('image/png');
-                link.click();
-                document.body.removeChild(wrapper);
+                input.parentNode.replaceChild(span, input);
             });
-        });
-    }
-</script>
+
+            // Força estilos para PNG com fundo branco
+            clone.style.background = '#fff';
+            clone.style.color = '#000';
+            clone.style.border = '2px solid #000';
+            clone.style.borderRadius = '0';
+            clone.style.boxShadow = 'none';
+            clone.style.padding = '20px';
+
+            // Força estilos dos cards
+            clone.querySelectorAll('.card').forEach(card => {
+                card.style.background = '#fff';
+                card.style.color = '#000';
+                card.style.border = '2px solid #000';
+                card.style.borderRadius = '0';
+                card.style.boxShadow = 'none';
+                card.style.padding = '15px';
+            });
+
+            // Força estilos da tabela
+            clone.querySelectorAll('table').forEach(table => {
+                table.style.background = '#fff';
+                table.style.borderCollapse = 'collapse';
+                table.style.width = '100%';
+            });
+
+            // Força estilos das células
+            clone.querySelectorAll('th, td').forEach(cell => {
+                cell.style.background = '#fff';
+                cell.style.color = '#000';
+                cell.style.border = '1px solid #000';
+                cell.style.padding = '8px';
+                cell.style.textAlign = 'center';
+                cell.style.fontWeight = cell.tagName === 'TH' ? 'bold' : 'normal';
+            });
+
+            // Prepara para renderização
+            const wrapper = document.createElement('div');
+            wrapper.style.position = 'fixed';
+            wrapper.style.top = '-10000px';
+            wrapper.style.left = '0';
+            wrapper.style.backgroundColor = '#fff';
+            wrapper.appendChild(clone);
+            document.body.appendChild(wrapper);
+
+            // Aguarda as fontes carregarem e renderiza
+            document.fonts.ready.then(() => {
+                html2canvas(clone, {
+                    backgroundColor: '#fff',
+                    scale: 2,
+                    scrollY: 0,
+                    scrollX: 0,
+                    useCORS: true,
+                    allowTaint: true,
+                    width: clone.offsetWidth,
+                    height: clone.offsetHeight
+                }).then(canvas => {
+                    const link = document.createElement('a');
+                    link.download = 'rotulo-nutricional.png';
+                    link.href = canvas.toDataURL('image/png');
+                    link.click();
+                    document.body.removeChild(wrapper);
+                }).catch(error => {
+                    console.error('Erro ao gerar PNG:', error);
+                    document.body.removeChild(wrapper);
+                });
+            });
+        }
+    </script>
 </body>
 </html>

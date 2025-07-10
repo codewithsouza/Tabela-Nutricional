@@ -7,7 +7,48 @@
     <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
     <link rel="stylesheet" href="style.css">
-    <script src="script.js"></script>
+    <style>
+        body, .preview-wrapper, .rotulo-container, .card {
+            background: #000 !important;
+            color: #fff !important;
+        }
+        table, th, td {
+            border: 1px solid #fff !important;
+        }
+        th, td {
+            text-align: center !important;
+            color: #fff !important;
+        }
+        input[type="text"], textarea {
+            background: transparent !important;
+            color: #fff !important;
+            border: none;
+        }
+        .sodio-sodio {
+            background: #fff !important;
+            color: #000 !important;
+        }
+        .sodio-altoem {
+            color: #fff !important;
+        }
+        .sodio-lupa svg circle,
+        .sodio-lupa svg rect,
+        .sodio-lupa svg {
+            stroke: #fff !important;
+            fill: #000 !important;
+        }
+        .toggle-sodio label, .toggle-sodio input {
+            color: #fff !important;
+        }
+        button {
+            background: #fff !important;
+            color: #000 !important;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 4px;
+            font-weight: bold;
+        }
+    </style>
 </head>
 
 <body>
@@ -24,8 +65,20 @@
                 <div class="subtitulo">
                     <input type="text" value="Carne seca">
                 </div>
-                <span class="industria-brasileira" style="font-size: 14px; display: block; text-align: center; margin-bottom: 4px;">Indústria Brasileira</span>
                 <div class="info-geral">
+                    <span class="selo-alto-sodio" id="seloAltoSodio">
+                        <div class="sodio-selo-wrapper pequeno" style="height:22px;min-width:60px;border-width:1.5px;">
+                            <span class="sodio-lupa" style="width:18px;height:22px;border-right:1.5px solid #000;display:flex;align-items:center;justify-content:center;">
+                                <svg width="14" height="14" viewBox="0 0 22 22">
+                                    <circle cx="10" cy="10" r="7" stroke="black" stroke-width="2" fill="white"/>
+                                    <rect x="15" y="15" width="5" height="2" rx="1" fill="black" transform="rotate(45 15 15)"/>
+                                    <circle cx="10" cy="10" r="3" fill="white" stroke="black"/>
+                                </svg>
+                            </span>
+                            <span class="sodio-altoem" style="font-size:11px;height:22px;padding:0 4px 0 2px;font-family:Arial,sans-serif;font-weight:bold;color:#000;display:flex;align-items:center;">ALTO EM</span>
+                            <span class="sodio-sodio" style="font-size:12px;height:22px;padding:0 8px;font-family:Arial,sans-serif;font-weight:bold;color:#fff;background:#000;display:flex;align-items:center;">SÓDIO</span>
+                        </div>
+                    </span>
                     <input type="text" value="Peso líquido: 600g">
                     <input type="text" value="Preparo: Micro-ondas 12 a 14 min">
                     <input type="text" value="Forno: 25 a 30 min">
@@ -33,8 +86,8 @@
             </div>
 
             <div class="card">
-                <div style="font-weight: bold; font-size: 9px;">
-                    <input type="text" value="INFORMAÇÃO NUTRICIONAL">
+                <div style="font-weight: bold; font-size: 15px;">
+                    <input type="text" value="INFORMAÇÃO NUTRICIONAL" style="font-size: 15px;">
                 </div>
                 <div style="font-size: 9px; margin-bottom: 2px;">
                     <input type="text" value="Porção por embalagem: 2">
@@ -129,19 +182,6 @@
                     <div class="validade">
                         <input type="text" value="Validade: 11/2021">
                     </div>
-                    <span class="selo-alto-sodio" id="seloAltoSodio">
-                        <div class="sodio-selo-wrapper pequeno" style="height:22px;min-width:60px;border-width:1.5px;">
-                            <span class="sodio-lupa" style="width:18px;height:22px;border-right:1.5px solid #000;display:flex;align-items:center;justify-content:center;">
-                                <svg width="14" height="14" viewBox="0 0 22 22">
-                                    <circle cx="10" cy="10" r="7" stroke="black" stroke-width="2" fill="white"/>
-                                    <rect x="15" y="15" width="5" height="2" rx="1" fill="black" transform="rotate(45 15 15)"/>
-                                    <circle cx="10" cy="10" r="3" fill="white" stroke="black"/>
-                                </svg>
-                            </span>
-                            <span class="sodio-altoem" style="font-size:11px;height:22px;padding:0 4px 0 2px;font-family:Arial,sans-serif;font-weight:bold;color:#000;display:flex;align-items:center;">ALTO EM</span>
-                            <span class="sodio-sodio" style="font-size:12px;height:22px;padding:0 8px;font-family:Arial,sans-serif;font-weight:bold;color:#fff;background:#000;display:flex;align-items:center;">SÓDIO</span>
-                        </div>
-                    </span>
                 </div>
             </div>
         </div>
@@ -167,7 +207,7 @@
     function baixarRotulo() {
         const original = document.getElementById('rotulo');
         const clone = original.cloneNode(true);
-        clone.classList.add('light-mode');
+        clone.classList.add('dark-mode');
 
         // Oculta o selo no PNG se o checkbox estiver desmarcado
         const showSodio = document.getElementById('toggleSodio').checked;
@@ -181,27 +221,27 @@
             span.style.fontFamily = style.fontFamily;
             span.style.fontSize = style.fontSize;
             span.style.fontWeight = style.fontWeight;
-            span.style.color = "#fff"; 
-            span.style.textAlign = style.textAlign;
+            span.style.color = "#fff"; // texto branco
+            span.style.textAlign = 'center';
             span.style.display = "inline-block";
+            span.style.background = 'transparent';
 
             if (input.parentElement.classList.contains('titulo-prato')) {
                 span.style.fontSize = '64px';
                 span.style.marginBottom = '2px';
                 span.style.fontFamily = "'Great Vibes', cursive";
                 span.style.color = '#fff';
-                span.style.textShadow = '2px 2px 6px #000, 0 0 2px #fff';
+                span.style.textShadow = 'none';
             } else if (input.parentElement.classList.contains('subtitulo')) {
                 span.style.fontSize = '32px';
                 span.style.fontFamily = "'Great Vibes', cursive";
                 span.style.color = '#fff';
-                span.style.textShadow = '2px 2px 6px #000, 0 0 2px #fff';
+                span.style.textShadow = 'none';
             }
 
             input.parentNode.replaceChild(span, input);
         });
 
-    
         clone.querySelectorAll('textarea').forEach(textarea => {
             const span = document.createElement('span');
             const style = window.getComputedStyle(textarea);
@@ -210,28 +250,43 @@
             span.style.fontSize = style.fontSize;
             span.style.fontWeight = style.fontWeight;
             span.style.color = "#fff";
-            span.style.textAlign = style.textAlign;
+            span.style.textAlign = 'center';
             span.style.display = "inline-block";
+            span.style.background = 'transparent';
             textarea.parentNode.replaceChild(span, textarea);
         });
 
-        
         clone.querySelectorAll('td, th').forEach(cell => {
             cell.style.color = '#fff';
             cell.style.fontWeight = 'bold';
+            cell.style.textAlign = 'center';
+            cell.style.border = '1px solid #fff';
+            cell.style.background = 'transparent';
+        });
+
+        // Fundo preto para PNG
+        clone.style.background = '#000';
+        clone.style.color = '#fff';
+        clone.querySelectorAll('*').forEach(el => {
+            el.style.background = 'transparent';
+            el.style.color = '#fff';
+            if (el.tagName === 'TD' || el.tagName === 'TH') {
+                el.style.border = '1px solid #fff';
+                el.style.textAlign = 'center';
+            }
         });
 
         const wrapper = document.createElement('div');
         wrapper.style.position = 'fixed';
         wrapper.style.top = '-10000px';
         wrapper.style.left = '0';
-        wrapper.style.backgroundColor = 'transparent';
+        wrapper.style.backgroundColor = '#000'; // fundo preto
         wrapper.appendChild(clone);
         document.body.appendChild(wrapper);
 
         document.fonts.ready.then(() => {
             html2canvas(clone, {
-                backgroundColor: null, 
+                backgroundColor: '#000', // fundo preto
                 scale: 2,
                 scrollY: 0,
                 scrollX: 0,

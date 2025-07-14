@@ -10,7 +10,7 @@
         body {
             background-color: #f0f2f5;
             color: #333;
-            font-family: "Segoe UI", sans-serif;
+            font-family: Arial, Helvetica, sans-serif;
             padding: 40px 0;
             display: flex;
             flex-direction: column;
@@ -50,7 +50,9 @@
             display: flex;
             flex-direction: column;
             justify-content: space-between;
-            font-size: 14px;
+            font-size: 8pt;
+            /* Tamanho mínimo 8pt */
+            font-family: Arial, Helvetica, sans-serif;
             box-sizing: border-box;
             border-radius: 12px;
             background-color: #fafafa;
@@ -69,12 +71,12 @@
 
         .titulo-prato input {
             font-family: 'Great Vibes', cursive;
-            font-size: clamp(38px, 7vw, 68px);
+            font-size: clamp(48px, 8vw, 78px);
             text-align: center;
             background-color: transparent;
             border: none;
             color: #111;
-            line-height: 1.1;
+            line-height: 1;
             padding: 0;
             margin: 0 auto;
             text-shadow: 2px 2px 6px #fff, 0 0 2px #111;
@@ -83,9 +85,15 @@
             text-overflow: ellipsis;
         }
 
+        .subtitulo {
+            margin-top: -5px;
+            /* Aproxima do título */
+        }
+
         .subtitulo input {
             font-family: 'Great Vibes', cursive;
-            font-size: clamp(22px, 3vw, 38px);
+            font-size: clamp(38px, 4vw, 58px);
+            /* aumentou 10px em cada valor */
             font-style: italic;
             text-align: center;
             background-color: transparent;
@@ -94,10 +102,12 @@
             margin: 0;
             padding: 0;
             text-shadow: 2px 2px 6px #fff, 0 0 2px #111;
+            line-height: 1;
         }
 
         .info-geral input {
-            font-size: 14px;
+            font-size: 8pt;
+            font-family: Arial, Helvetica, sans-serif;
             width: 100%;
             margin-bottom: 4px;
             background-color: transparent;
@@ -111,18 +121,21 @@
             word-break: break-word;
             white-space: normal;
             border-collapse: collapse;
-            font-size: 15px;
+            font-size: 8pt;
+            font-family: Arial, Helvetica, sans-serif;
             margin-left: 0;
             margin-top: 8px;
             background-color: #fff;
         }
 
-        th, td {
+        th,
+        td {
             border: 1px solid #000;
             padding: 6px 4px;
             text-align: center;
             background-color: #fff;
             color: #000;
+            font-family: Arial, Helvetica, sans-serif;
         }
 
         th {
@@ -135,28 +148,56 @@
             background-color: transparent;
             border: none;
             color: #333;
-            font-size: 15px;
+            font-size: 8pt;
+            font-family: Arial, Helvetica, sans-serif;
             box-sizing: border-box;
         }
 
         .info-extra input {
-            font-size: 12px;
+            font-size: 8pt;
+            font-family: Arial, Helvetica, sans-serif;
             width: 100%;
             background-color: transparent;
             color: #777;
             border: none;
         }
 
+        .ingredientes {
+            font-size: 8pt;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
         .ingredientes input {
-            font-size: 12px;
+            font-size: 8pt;
+            font-family: Arial, Helvetica, sans-serif;
             width: 100%;
             background-color: transparent;
             color: #333;
             border: none;
         }
 
+        .nao-contem-gluten {
+            text-transform: uppercase;
+            font-weight: bold;
+            font-size: 8pt;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        .lote-input {
+            font-size: 8pt;
+            font-family: Arial, Helvetica, sans-serif;
+            width: 100%;
+            background-color: transparent;
+            color: #000000;
+            border: none;
+            margin-bottom: 5px;
+            color: black;
+
+        }
+
         .validade input {
-            font-size: 14px;
+            font-size: 8pt;
+            font-family: Arial, Helvetica, sans-serif;
             font-weight: bold;
             width: 100%;
             background-color: transparent;
@@ -168,61 +209,29 @@
             font-weight: bold;
         }
 
+        /* Selo alto em sódio com imagem PNG */
         .sodio-selo-wrapper {
             display: flex;
+            justify-content: center;
             align-items: center;
-            border: 2px solid #000;
-            border-radius: 7px;
-            overflow: hidden;
-            background: #fff;
-            height: 19px;
-            min-width: 95px;
-            box-shadow: 0 1px 2px #0001;
+            margin-bottom: 10px;
         }
 
-        .sodio-lupa {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background: #fff;
-            border-right: 2px solid #000;
-            height: 19px;
-            width: 22px;
-            padding-left: 2px;
-        }
-
-        .sodio-altoem {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-family: Arial, sans-serif;
-            font-size: 7px;
-            font-weight: bold;
-            color: #000;
-            background: #fff;
-            height: 19px;
-            padding: 0 5px 0 1px;
-            letter-spacing: 0.2px;
-        }
-
-        .sodio-sodio {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-family: Arial, sans-serif;
-            font-size: 9px;
-            font-weight: bold;
-            color: #fff;
-            background: #000;
-            height: 19px;
-            padding: 0 10px;
-            letter-spacing: 0.5px;
+        .sodio-selo-wrapper img {
+            max-width: 200px;
+            width: 60%;
+            /* 40% menor que o tamanho original */
+            height: auto;
+            border: none;
+            box-shadow: none;
+            margin-left: -50px;
+            margin-top: -10px;
         }
 
         .validade-sodio {
             display: flex;
-            align-items: center;
-            gap: 10px;
+            flex-direction: column;
+            gap: 5px;
         }
 
         .selo-alto-sodio {
@@ -241,6 +250,7 @@
             border-radius: 6px;
             cursor: pointer;
             font-size: 14px;
+            font-family: Arial, Helvetica, sans-serif;
         }
 
         button:hover {
@@ -261,6 +271,7 @@
         .toggle-sodio label {
             color: #333;
             font-size: 14px;
+            font-family: Arial, Helvetica, sans-serif;
         }
 
         .rotulo-container .card:nth-child(1) {
@@ -281,6 +292,7 @@
                 padding: 18px 2vw;
                 gap: 12px;
             }
+
             .card {
                 min-width: 220px;
                 max-width: 98vw;
@@ -295,6 +307,7 @@
                 width: 99vw;
                 padding: 8px 0;
             }
+
             .card {
                 min-width: 180px;
                 max-width: 99vw;
@@ -307,21 +320,26 @@
                 padding: 2vw 0;
                 gap: 6px;
             }
+
             .card {
                 padding: 6px 2px;
-                font-size: 12px;
+                font-size: 8pt;
             }
+
             .titulo-prato input {
-                font-size: clamp(22px, 8vw, 38px);
+                font-size: clamp(32px, 10vw, 48px);
             }
+
             .subtitulo input {
-                font-size: clamp(14px, 4vw, 22px);
+                font-size: clamp(20px, 6vw, 32px);
             }
+
             table {
-                font-size: 11px;
+                font-size: 8pt;
             }
+
             input[type="text"] {
-                font-size: 11px;
+                font-size: 8pt;
             }
         }
     </style>
@@ -340,30 +358,25 @@
                 <div class="info-geral">
                     <span class="selo-alto-sodio" id="seloAltoSodio">
                         <div class="sodio-selo-wrapper">
-                            <span class="sodio-lupa">
-                                <svg width="11" height="11" viewBox="0 0 22 22">
-                                    <circle cx="10" cy="10" r="7" stroke="black" stroke-width="2" fill="white"/>
-                                    <rect x="15" y="15" width="5" height="2" rx="1" fill="black" transform="rotate(45 15 15)"/>
-                                    <circle cx="10" cy="10" r="3" fill="white" stroke="black"/>
-                                </svg>
-                            </span>
-                            <span class="sodio-altoem">ALTO EM</span>
-                            <span class="sodio-sodio">SÓDIO</span>
+                            <img src="lupa.png" alt="Alto em Sódio" id="seloImagem">
                         </div>
                     </span>
-                    <input type="text" value="Peso líquido: 600g">
+                    <input type="text" value="Peso líq.: 600g">
                     <input type="text" value="Preparo: Micro-ondas 12 a 14 min">
                     <input type="text" value="Forno: 25 a 30 min">
                 </div>
             </div>
 
             <div class="card">
-                <div style="font-weight: bold; font-size: 22px; margin-bottom: 8px;">
-                    <input type="text" value="INFORMAÇÃO NUTRICIONAL" style="font-size: 22px; font-weight: bold;">
+                <div style="font-weight: bold; font-size: 12pt; margin-bottom: 8px;">
+                    <input type="text" value="INFORMAÇÃO NUTRICIONAL"
+                        style="font-size: 12pt; font-weight: bold; font-family: Arial, Helvetica, sans-serif;">
                 </div>
-                <div style="font-size: 12px; margin-bottom: 8px;">
-                    <input type="text" value="Porção por embalagem: 2" style="font-size: 12px;">
-                    <input type="text" value="Porção: 300g (meia unidade)" style="font-size: 12px;">
+                <div style="font-size: 8pt; margin-bottom: 8px;">
+                    <input type="text" value="Porção por embalagem: 2"
+                        style="font-size: 8pt; font-family: Arial, Helvetica, sans-serif;">
+                    <input type="text" value="Porção: 300g (meia unidade)"
+                        style="font-size: 8pt; font-family: Arial, Helvetica, sans-serif;">
                 </div>
                 <table>
                     <thead>
@@ -438,7 +451,8 @@
                     </tbody>
                 </table>
                 <div class="info-extra" style="margin-top: 8px;">
-                    <input type="text" value="*Porcentagem de valores diários fornecidos pela porção." style="font-size: 11px; color: #666;">
+                    <input type="text" value="*Porcentagem de valores diários fornecidos pela porção."
+                        style="font-size: 8pt; color: #666; font-family: Arial, Helvetica, sans-serif;">
                 </div>
             </div>
 
@@ -446,11 +460,15 @@
                 <div class="ingredientes">
                     <strong>Ingredientes:</strong><br>
                     <input type="text" value="Purê de mandioca, carne seca, parmesão, alho, especiarias e sal."><br><br>
-                    <input type="text" value="Não contém glúten." style="font-weight:bold;"><br><br>
+                    <input type="text" value="NÃO CONTÉM GLÚTEN" class="nao-contem-gluten"><br><br>
                     <strong>ALÉRGICOS:</strong><br>
                     <input type="text" value="Contém derivados de leite, de soja. Pode conter trigo e ovos.">
                 </div>
+
                 <div class="validade-sodio">
+                    <div class="lote">
+                        <input type="text" value="Lote: 001072025" class="lote-input">
+                    </div>
                     <div class="validade">
                         <input type="text" value="Validade: 11/2021">
                     </div>
@@ -468,10 +486,10 @@
 
     <script>
         // Controle do selo ALTO EM SÓDIO
-        document.addEventListener('DOMContentLoaded', function() {
+        document.addEventListener('DOMContentLoaded', function () {
             const checkbox = document.getElementById('toggleSodio');
             const selo = document.getElementById('seloAltoSodio');
-            checkbox.addEventListener('change', function() {
+            checkbox.addEventListener('change', function () {
                 selo.style.display = this.checked ? 'inline-flex' : 'none';
             });
             selo.style.display = checkbox.checked ? 'inline-flex' : 'none';
@@ -492,9 +510,9 @@
             clone.querySelectorAll('input[type="text"]').forEach(input => {
                 const span = document.createElement('span');
                 const style = window.getComputedStyle(input);
-                
+
                 span.textContent = input.value;
-                span.style.fontFamily = style.fontFamily;
+                span.style.fontFamily = 'Arial, Helvetica, sans-serif';
                 span.style.fontSize = style.fontSize;
                 span.style.fontWeight = style.fontWeight;
                 span.style.color = '#000';
@@ -505,17 +523,28 @@
 
                 // Estilos específicos para títulos
                 if (input.parentElement.classList.contains('titulo-prato')) {
-                    span.style.fontSize = '64px';
+                    span.style.fontSize = '74px';
                     span.style.fontFamily = "'Great Vibes', cursive";
                     span.style.color = '#000';
                     span.style.textAlign = 'center';
                     span.style.textShadow = 'none';
                 } else if (input.parentElement.classList.contains('subtitulo')) {
-                    span.style.fontSize = '32px';
+                    span.style.fontSize = '44px';
                     span.style.fontFamily = "'Great Vibes', cursive";
                     span.style.color = '#000';
                     span.style.textAlign = 'center';
                     span.style.textShadow = 'none';
+                } else if (input.classList.contains('nao-contem-gluten')) {
+                    span.style.textTransform = 'uppercase';
+                    span.style.fontWeight = 'bold';
+                    span.style.fontSize = '8pt';
+                    span.style.fontFamily = 'Arial, Helvetica, sans-serif';
+                } else if (input.classList.contains('lote-input')) {
+                    span.style.fontSize = '8pt';
+                    span.style.fontFamily = 'Arial, Helvetica, sans-serif';
+                } else {
+                    span.style.fontSize = '8pt';
+                    span.style.fontFamily = 'Arial, Helvetica, sans-serif';
                 }
 
                 input.parentNode.replaceChild(span, input);
@@ -537,6 +566,8 @@
                 card.style.borderRadius = '0';
                 card.style.boxShadow = 'none';
                 card.style.padding = '15px';
+                card.style.fontFamily = 'Arial, Helvetica, sans-serif';
+                card.style.fontSize = '8pt';
             });
 
             // Força estilos da tabela
@@ -544,6 +575,8 @@
                 table.style.background = '#fff';
                 table.style.borderCollapse = 'collapse';
                 table.style.width = '100%';
+                table.style.fontFamily = 'Arial, Helvetica, sans-serif';
+                table.style.fontSize = '8pt';
             });
 
             // Força estilos das células
@@ -554,6 +587,8 @@
                 cell.style.padding = '8px';
                 cell.style.textAlign = 'center';
                 cell.style.fontWeight = cell.tagName === 'TH' ? 'bold' : 'normal';
+                cell.style.fontFamily = 'Arial, Helvetica, sans-serif';
+                cell.style.fontSize = '8pt';
             });
 
             // Prepara para renderização
@@ -590,4 +625,5 @@
         }
     </script>
 </body>
+
 </html>

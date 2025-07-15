@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>Rótulo Interativo Sem Sódio</title>
+    <title>Rótulo Interativo</title>
     <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
     <style>
@@ -59,6 +59,7 @@
             max-width: 370px;
             margin: 0 4px;
             box-shadow: 0 2px 8px #0001;
+            position: relative;
         }
 
         .titulo-prato {
@@ -66,6 +67,7 @@
             flex-direction: column;
             align-items: center;
             margin-bottom: 2px;
+            margin-top: 20px;
         }
 
         .titulo-prato input {
@@ -112,41 +114,175 @@
             border: none;
         }
 
-        table {
-            width: 100%;
-            table-layout: auto;
-            word-break: break-word;
-            white-space: normal;
-            border-collapse: collapse;
+        /* Posicionamento do selo no canto superior direito */
+        .selo-alto-sodio {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            z-index: 10;
+        }
+
+        .sodio-selo-wrapper {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .sodio-selo-wrapper img {
+            max-width: 80px;
+            width: 80px;
+            height: auto;
+            border: none;
+            box-shadow: none;
+        }
+
+        /* Posicionamento do peso no canto inferior direito - CORRIGIDO */
+        .peso-liquido {
+            position: absolute;
+            bottom: 10px;
+            right: 10px;
+            z-index: 10;
             font-size: 8pt;
             font-family: Arial, Helvetica, sans-serif;
-            margin-left: 0;
-            margin-top: 8px;
-            background-color: #fff;
+            color: #333;
+            background-color: rgba(255, 255, 255, 0.9);
+            padding: 2px 4px;
+            border-radius: 2px;
         }
 
-        th, td {
-            border: 1px solid #000;
-            padding: 6px 4px;
-            text-align: center;
-            background-color: #fff;
-            color: #000;
+        .peso-liquido input {
+            font-size: 8pt;
             font-family: Arial, Helvetica, sans-serif;
+            background-color: transparent;
+            border: none;
+            color: #333;
+            width: auto;
+            padding: 0;
+            margin: 0;
         }
 
-        th {
+
+        .tabela-nutricional {
+            border-collapse: collapse;
+            width: 100%;
+            font-family: Arial, sans-serif;
+            font-size: 8pt;
+            background-color: #ffffff;
+            color: #000000;
+        }
+
+        .tabela-nutricional th {
+            background-color: #f2f2f2;
+            /* cinza claro no cabeçalho */
+            border: 1px solid #000000;
+            padding: 4px 6px;
+            text-align: center;
             font-weight: bold;
+        }
+
+        .tabela-nutricional td {
+            background-color: #ffffff;
+            color: #000000;
+            border: 1px solid #000000;
+            padding: 4px 6px;
+        }
+
+        .tabela-nutricional td:first-child {
+            text-align: left;
+        }
+
+        .tabela-nutricional td:not(:first-child) {
+            text-align: center;
+        }
+
+        .rodape-nutricional {
+            font-size: 7pt;
+            font-family: Arial, sans-serif;
+            margin-top: 4px;
+            color: #000000;
+            background-color: #ffffff;
+        }
+
+
+        .tabela-nutricional .header-colunas {
+            background-color: #f0f0f0;
+            border: 1px solid #000;
+            padding: 6px;
+            text-align: center;
+            font-weight: bold;
+            font-size: 8pt;
+        }
+
+        .tabela-nutricional .linha-nutriente {
+            background-color: #fff;
+            border: 1px solid #000;
+        }
+
+        .tabela-nutricional .linha-nutriente:nth-child(even) {
+            background-color: #f8f8f8;
+        }
+
+        .tabela-nutricional .linha-nutriente td {
+            padding: 4px 8px;
+            font-size: 8pt;
+            border-right: 1px solid #000;
+        }
+
+        .tabela-nutricional .linha-nutriente td:first-child {
+            text-align: left;
+            font-weight: normal;
+        }
+
+        .tabela-nutricional .linha-nutriente td:not(:first-child) {
+            text-align: center;
+        }
+
+        .tabela-nutricional .linha-nutriente td:last-child {
+            border-right: none;
+        }
+
+        .tabela-nutricional .sub-item {
+            padding-left: 12px !important;
+            /* Reduzido de 20px para 12px */
+        }
+
+        .tabela-nutricional tr:nth-child(2) td {
+            border-top: 1px solid #000;
+        }
+
+        /* Linha após porções por embalagem - mais grossa */
+        .tabela-nutricional tr:nth-child(3) td {
+            border-top: 3px solid #000;
+        }
+
+        /* Linha acima do rodapé (penúltima linha) - média */
+        .tabela-nutricional tr:nth-last-child(2) td {
+            border-bottom: 2px solid #000;
+        }
+
+        .tabela-nutricional .rodape {
+            background-color: #fff;
+            border: 1px solid #000;
+            padding: 5px 8px;
+            font-size: 7pt;
+            text-align: left;
+            color: #666;
         }
 
         input[type="text"] {
             width: 100%;
-            padding: 4px 2px;
+            padding: 2px;
             background-color: transparent;
             border: none;
             color: #333;
             font-size: 8pt;
             font-family: Arial, Helvetica, sans-serif;
             box-sizing: border-box;
+        }
+
+        input[type="text"]:focus {
+            outline: 1px solid #007bff;
+            background-color: #f8f9fa;
         }
 
         .info-extra input {
@@ -184,9 +320,10 @@
             font-family: Arial, Helvetica, sans-serif;
             width: 100%;
             background-color: transparent;
-            color: #333;
+            color: #000000;
             border: none;
             margin-bottom: 5px;
+            color: black;
         }
 
         .validade input {
@@ -203,6 +340,12 @@
             font-weight: bold;
         }
 
+        .validade-sodio {
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+        }
+
         button {
             margin-top: 20px;
             padding: 10px 16px;
@@ -217,6 +360,23 @@
 
         button:hover {
             background-color: #0b5ed7;
+        }
+
+        .toggle-sodio {
+            margin-top: 10px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .toggle-sodio input {
+            width: auto;
+        }
+
+        .toggle-sodio label {
+            color: #333;
+            font-size: 14px;
+            font-family: Arial, Helvetica, sans-serif;
         }
 
         .rotulo-container .card:nth-child(1) {
@@ -237,6 +397,7 @@
                 padding: 18px 2vw;
                 gap: 12px;
             }
+
             .card {
                 min-width: 220px;
                 max-width: 98vw;
@@ -251,6 +412,7 @@
                 width: 99vw;
                 padding: 8px 0;
             }
+
             .card {
                 min-width: 180px;
                 max-width: 99vw;
@@ -263,21 +425,88 @@
                 padding: 2vw 0;
                 gap: 6px;
             }
+
             .card {
                 padding: 6px 2px;
                 font-size: 8pt;
             }
+
             .titulo-prato input {
                 font-size: clamp(32px, 10vw, 48px);
             }
+
+            .subtitulo {
+                margin-top: -15px;
+            }
+
             .subtitulo input {
-                font-size: clamp(20px, 6vw, 32px);
+                font-family: 'Great Vibes', cursive;
+                font-size: clamp(46px, 5vw, 68px);
+                font-style: italic;
+                text-align: center;
+                background-color: transparent;
+                color: #111;
+                border: none;
+                margin: 0;
+                padding: 0;
+                text-shadow: 2px 2px 6px #fff, 0 0 2px #111;
+                line-height: 1;
             }
-            table {
-                font-size: 8pt;
+
+            .sodio-selo-wrapper img {
+                max-width: 60px;
+                width: 60px;
             }
-            input[type="text"] {
-                font-size: 8pt;
+
+            .tabela-nutricional .sub-item {
+                padding-left: 12px !important;
+                /* Reduzido de 20px para 12px */
+            }
+
+            /* Para um alinhamento ainda mais preciso, você pode usar este CSS mais específico: */
+            .tabela-nutricional .linha-nutriente td.sub-item {
+                padding-left: 12px !important;
+                text-indent: 0;
+            }
+
+            /* Ou se quiser um controle ainda mais fino, use esta versão: */
+            .tabela-nutricional tr:nth-child(6) td:first-child {
+                padding-left: 12px !important;
+                /* Açúcares totais */
+            }
+
+            .tabela-nutricional tr:nth-child(7) td:first-child {
+                padding-left: 24px !important;
+                /* Açúcares adicionados */
+            }
+
+            .tabela-nutricional tr:nth-child(11) td:first-child {
+                padding-left: 12px !important;
+                /* Gorduras saturadas */
+            }
+
+            .tabela-nutricional tr:nth-child(12) td:first-child {
+                padding-left: 12px !important;
+                /* Gorduras trans */
+            }
+
+            .tabela-nutricional td {
+                font-family: 'Courier New', Courier, monospace;
+                /* monoespaçado */
+            }
+
+            .tabela-nutricional .nivel-0 {
+                padding-left: 0;
+            }
+
+            .tabela-nutricional .nivel-1 {
+                padding-left: 2ch;
+                /* 2 caracteres */
+            }
+
+            .tabela-nutricional .nivel-2 {
+                padding-left: 4ch;
+                /* 4 caracteres */
             }
         }
     </style>
@@ -287,6 +516,16 @@
     <div class="preview-wrapper">
         <div class="rotulo-container" id="rotulo">
             <div class="card">
+                <!-- Selo ALTO EM SÓDIO no canto superior direito -->
+                <span class="selo-alto-sodio" id="seloAltoSodio">
+                    <div class="sodio-selo-wrapper">
+                        <img src="lupa.png" alt="Alto em Sódio" id="seloImagem">
+                    </div>
+                </span>
+                <!-- Peso líquido no canto inferior direito - CORRIGIDO -->
+                <div class="peso-liquido">
+                    <input type="text" value="Peso líq. 600g">
+                </div>
                 <div class="titulo-prato">
                     <input type="text" value="Escondidinho">
                 </div>
@@ -294,95 +533,99 @@
                     <input type="text" value="Carne seca">
                 </div>
                 <div class="info-geral">
-                    <input type="text" value="Peso líq. 600g">
                     <input type="text" value="Preparo: Micro-ondas 12 a 14 min">
                     <input type="text" value="Forno: 25 a 30 min">
                 </div>
             </div>
 
             <div class="card">
-                <div style="font-weight: bold; font-size: 12pt; margin-bottom: 8px;">
-                    <input type="text" value="INFORMAÇÃO NUTRICIONAL" style="font-size: 12pt; font-weight: bold; font-family: Arial, Helvetica, sans-serif;">
-                </div>
-                <div style="font-size: 8pt; margin-bottom: 8px;">
-                    <input type="text" value="Porção por embalagem: 2" style="font-size: 8pt; font-family: Arial, Helvetica, sans-serif;">
-                    <input type="text" value="Porção: 300g (meia unidade)" style="font-size: 8pt; font-family: Arial, Helvetica, sans-serif;">
-                </div>
-                <table>
-                    <thead>
-                        <tr>
-                            <th></th>
-                            <th>100 g</th>
-                            <th>300 g</th>
-                            <th>%VD*</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>Valor Energético (Kcal)</td>
-                            <td><input type="text" value="179"></td>
-                            <td><input type="text" value="537"></td>
-                            <td><input type="text" value="27"></td>
-                        </tr>
-                        <tr>
-                            <td>Carboidratos (g)</td>
-                            <td><input type="text" value="12"></td>
-                            <td><input type="text" value="35"></td>
-                            <td><input type="text" value="12"></td>
-                        </tr>
-                        <tr>
-                            <td>Açúcares totais (g)</td>
-                            <td><input type="text" value="1,9"></td>
-                            <td><input type="text" value="5,7"></td>
-                            <td><input type="text" value=""></td>
-                        </tr>
-                        <tr>
-                            <td>Açúcares adicionados (g)</td>
-                            <td><input type="text" value="0,6"></td>
-                            <td><input type="text" value="1,8"></td>
-                            <td><input type="text" value="4"></td>
-                        </tr>
-                        <tr>
-                            <td>Proteínas (g)</td>
-                            <td><input type="text" value="13"></td>
-                            <td><input type="text" value="39"></td>
-                            <td><input type="text" value="77"></td>
-                        </tr>
-                        <tr>
-                            <td>Gorduras Totais (g)</td>
-                            <td><input type="text" value="8,6"></td>
-                            <td><input type="text" value="26"></td>
-                            <td><input type="text" value="40"></td>
-                        </tr>
-                        <tr>
-                            <td>Gorduras Saturadas (g)</td>
-                            <td><input type="text" value="4,2"></td>
-                            <td><input type="text" value="13"></td>
-                            <td><input type="text" value="63"></td>
-                        </tr>
-                        <tr>
-                            <td>Gorduras Trans (g)</td>
-                            <td><input type="text" value="0"></td>
-                            <td><input type="text" value="0"></td>
-                            <td><input type="text" value="0"></td>
-                        </tr>
-                        <tr>
-                            <td>Fibras alimentares (g)</td>
-                            <td><input type="text" value="0,9"></td>
-                            <td><input type="text" value="2,7"></td>
-                            <td><input type="text" value="11"></td>
-                        </tr>
-                        <tr>
-                            <td>Sódio (mg)</td>
-                            <td><input type="text" value="615"></td>
-                            <td><input type="text" value="1845"></td>
-                            <td><input type="text" value="92"></td>
-                        </tr>
-                    </tbody>
+                <table class="tabela-nutricional">
+                    <tr>
+                        <td colspan="4" class="cabecalho">
+                            INFORMAÇÃO NUTRICIONAL
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="4" class="info-porcao">
+                            <input type="text" value="Porções por embalagem: cerca de 4"
+                                style="font-size: 8pt; margin-bottom: 2px;"><br>
+                            <input type="text" value="Porção: 18 g (1/2 xícara de chá)" style="font-size: 8pt;">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="header-colunas"></td>
+                        <td class="header-colunas">100 g</td>
+                        <td class="header-colunas">18 g</td>
+                        <td class="header-colunas">%VD*</td>
+                    </tr>
+                    <tr class="linha-nutriente">
+                        <td>Valor energético (kcal)</td>
+                        <td><input type="text" value="547"></td>
+                        <td><input type="text" value="97"></td>
+                        <td><input type="text" value="5"></td>
+                    </tr>
+                    <tr class="linha-nutriente">
+                        <td style="font-family: 'Courier New', monospace;">Carboidratos totais (g)</td>
+                        <td><input type="text" value="0"></td>
+                        <td><input type="text" value="0"></td>
+                        <td><input type="text" value="0"></td>
+                    </tr>
+                    <tr class="linha-nutriente">
+                        <td style="font-family: 'Courier New', monospace;">&nbsp;&nbsp;Açúcares totais (g)</td>
+                        <td><input type="text" value="0"></td>
+                        <td><input type="text" value="0"></td>
+                        <td><input type="text" value=""></td>
+                    </tr>
+                    <tr class="linha-nutriente">
+                        <td style="font-family: 'Courier New', monospace;">&nbsp;&nbsp;&nbsp;&nbsp;Açúcares adicionados
+                            (g)</td>
+                        <td><input type="text" value="0"></td>
+                        <td><input type="text" value="0"></td>
+                        <td><input type="text" value="0"></td>
+                    </tr>
+                    <tr class="linha-nutriente">
+                        <td>Proteínas (g)</td>
+                        <td><input type="text" value="58"></td>
+                        <td><input type="text" value="10"></td>
+                        <td><input type="text" value="20"></td>
+                    </tr>
+                    <tr class="linha-nutriente">
+                        <td>Gorduras totais (g)</td>
+                        <td><input type="text" value="35"></td>
+                        <td><input type="text" value="6,3"></td>
+                        <td><input type="text" value="10"></td>
+                    </tr>
+                    <tr class="linha-nutriente">
+                        <td class="sub-item">Gorduras saturadas (g)</td>
+                        <td><input type="text" value="12"></td>
+                        <td><input type="text" value="2,2"></td>
+                        <td><input type="text" value="11"></td>
+                    </tr>
+                    <tr class="linha-nutriente">
+                        <td class="sub-item">Gorduras trans (g)</td>
+                        <td><input type="text" value="0"></td>
+                        <td><input type="text" value="0"></td>
+                        <td><input type="text" value="0"></td>
+                    </tr>
+                    <tr class="linha-nutriente">
+                        <td>Fibras alimentares (g)</td>
+                        <td><input type="text" value="1,8"></td>
+                        <td><input type="text" value="0,3"></td>
+                        <td><input type="text" value="2"></td>
+                    </tr>
+                    <tr class="linha-nutriente">
+                        <td>Sódio (mg)</td>
+                        <td><input type="text" value="745"></td>
+                        <td><input type="text" value="134"></td>
+                        <td><input type="text" value="7"></td>
+                    </tr>
+                    <tr>
+                        <td colspan="4" class="rodape">
+                            <input type="text" value="*Percentual de valores diários fornecidos pela porção."
+                                style="font-size: 7pt; color: #666;">
+                        </td>
+                    </tr>
                 </table>
-                <div class="info-extra" style="margin-top: 8px;">
-                    <input type="text" value="*Porcentagem de valores diários fornecidos pela porção." style="font-size: 8pt; color: #666; font-family: Arial, Helvetica, sans-serif;">
-                </div>
             </div>
 
             <div class="card">
@@ -393,8 +636,7 @@
                     <strong>ALÉRGICOS:</strong><br>
                     <input type="text" value="Contém derivados de leite, de soja. Pode conter trigo e ovos.">
                 </div>
-                
-                <div class="validade">
+                <div class="validade-sodio">
                     <div class="lote">
                         <input type="text" value="Lote: 001072025" class="lote-input">
                     </div>
@@ -405,80 +647,94 @@
             </div>
         </div>
     </div>
-
     <button onclick="baixarRotulo()">Baixar como PNG</button>
-
+    <div class="toggle-sodio">
+        <input type="checkbox" id="toggleSodio" checked>
+        <label for="toggleSodio">Exibir selo ALTO EM SÓDIO</label>
+    </div>
     <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const checkbox = document.getElementById('toggleSodio');
+            const selo = document.getElementById('seloAltoSodio');
+
+            checkbox.addEventListener('change', function () {
+                selo.style.display = this.checked ? 'block' : 'none';
+            });
+
+            selo.style.display = checkbox.checked ? 'block' : 'none';
+        });
         function baixarRotulo() {
             const original = document.getElementById('rotulo');
             const clone = original.cloneNode(true);
 
-            // Substitui todos os inputs por spans com o valor
+            // Controla a exibição do selo "ALTO EM SÓDIO"
+            const showSodio = document.getElementById('toggleSodio').checked;
+            const cloneSelo = clone.querySelector('#seloAltoSodio');
+            if (cloneSelo) {
+                cloneSelo.style.display = showSodio ? 'block' : 'none';
+            }
+
+            // Substitui inputs por spans mantendo estilos
             clone.querySelectorAll('input[type="text"]').forEach(input => {
                 const span = document.createElement('span');
-                const style = window.getComputedStyle(input);
-                
                 span.textContent = input.value;
-                span.style.fontFamily = 'Arial, Helvetica, sans-serif';
-                span.style.fontSize = style.fontSize;
-                span.style.fontWeight = style.fontWeight;
-                span.style.color = '#000';
-                span.style.textAlign = style.textAlign;
-                span.style.display = 'inline-block';
-                span.style.width = '100%';
-                span.style.background = '#fff';
 
-                // Estilos específicos para títulos
+                const style = window.getComputedStyle(input);
+                span.style.cssText = `
+            display: block;
+            font-family: ${style.fontFamily};
+            font-size: ${style.fontSize};
+            font-weight: ${style.fontWeight};
+            color: ${style.color};
+            background: #fff;
+            width: 100%;
+            text-align: ${style.textAlign};
+        `;
+
                 if (input.parentElement.classList.contains('titulo-prato')) {
-                    span.style.fontSize = '74px';
+                    span.style.fontSize = '80px';
                     span.style.fontFamily = "'Great Vibes', cursive";
-                    span.style.color = '#000';
                     span.style.textAlign = 'center';
-                    span.style.textShadow = 'none';
                 } else if (input.parentElement.classList.contains('subtitulo')) {
-                    span.style.fontSize = '44px';
+                    span.style.fontSize = '60px';
+                    span.style.marginTop = '-95px';
                     span.style.fontFamily = "'Great Vibes', cursive";
-                    span.style.color = '#000';
                     span.style.textAlign = 'center';
-                    span.style.textShadow = 'none';
                 } else if (input.classList.contains('nao-contem-gluten')) {
                     span.style.textTransform = 'uppercase';
                     span.style.fontWeight = 'bold';
                     span.style.fontSize = '8pt';
-                    span.style.fontFamily = 'Arial, Helvetica, sans-serif';
+                    span.style.textAlign = 'left';
                 } else if (input.classList.contains('lote-input')) {
                     span.style.fontSize = '8pt';
-                    span.style.fontFamily = 'Arial, Helvetica, sans-serif';
-                } else {
-                    span.style.fontSize = '8pt';
-                    span.style.fontFamily = 'Arial, Helvetica, sans-serif';
+                    span.style.textAlign = 'left';
                 }
 
                 input.parentNode.replaceChild(span, input);
             });
 
-            // Força estilos para PNG com fundo branco
+            // Estilo geral do clone
             clone.style.background = '#fff';
             clone.style.color = '#000';
-            clone.style.border = '2px solid #000';
+            clone.style.border = '1px solid #000';
             clone.style.borderRadius = '0';
             clone.style.boxShadow = 'none';
             clone.style.padding = '20px';
+            clone.style.fontFamily = 'Arial, Helvetica, sans-serif';
+            clone.style.fontSize = '8pt';
 
-            // Força estilos dos cards
+            // Estilo dos cards
             clone.querySelectorAll('.card').forEach(card => {
                 card.style.background = '#fff';
                 card.style.color = '#000';
-                card.style.border = '2px solid #000';
+                card.style.border = '1px solid #000';
                 card.style.borderRadius = '0';
                 card.style.boxShadow = 'none';
-                card.style.padding = '15px';
-                card.style.fontFamily = 'Arial, Helvetica, sans-serif';
-                card.style.fontSize = '8pt';
+                card.style.padding = '10px';
             });
 
-            // Força estilos da tabela
-            clone.querySelectorAll('table').forEach(table => {
+            // Estilo da tabela nutricional
+            clone.querySelectorAll('.tabela-nutricional').forEach(table => {
                 table.style.background = '#fff';
                 table.style.borderCollapse = 'collapse';
                 table.style.width = '100%';
@@ -486,19 +742,51 @@
                 table.style.fontSize = '8pt';
             });
 
-            // Força estilos das células
-            clone.querySelectorAll('th, td').forEach(cell => {
-                cell.style.background = '#fff';
-                cell.style.color = '#000';
+            // Estilo geral das células da tabela
+            clone.querySelectorAll('.tabela-nutricional td, .tabela-nutricional th').forEach(cell => {
                 cell.style.border = '1px solid #000';
-                cell.style.padding = '8px';
-                cell.style.textAlign = 'center';
-                cell.style.fontWeight = cell.tagName === 'TH' ? 'bold' : 'normal';
-                cell.style.fontFamily = 'Arial, Helvetica, sans-serif';
+                cell.style.padding = '4px 6px';
                 cell.style.fontSize = '8pt';
+                cell.style.fontFamily = 'Arial, Helvetica, sans-serif';
+
+                const isHeader = cell.classList.contains('cabecalho');
+                if (isHeader) {
+                    cell.style.background = '#fff'; // fundo branco
+                    cell.style.color = '#000';      // letra preta
+                    cell.style.textAlign = 'center';
+                    cell.style.fontWeight = 'bold';
+                } else {
+                    cell.style.background = '#fff';
+                    cell.style.color = '#000';
+                    cell.style.textAlign = cell.cellIndex === 0 ? 'left' : 'center';
+                }
             });
 
-            // Prepara para renderização
+            // Aplicar espessuras específicas nas linhas da tabela nutricional (padrão ANVISA)
+            const linhasTabela = clone.querySelectorAll('.tabela-nutricional tr');
+
+            // Linha após o título (segunda linha)
+            if (linhasTabela[1]) {
+                linhasTabela[1].querySelectorAll('td').forEach(td => {
+                    td.style.borderTop = '1px solid #000'; // Fina
+                });
+            }
+
+            // Linha após as porções (terceira linha)
+            if (linhasTabela[2]) {
+                linhasTabela[2].querySelectorAll('td').forEach(td => {
+                    td.style.borderTop = '3px solid #000'; // Grossa
+                });
+            }
+
+            // Última linha antes do rodapé (penúltima linha)
+            if (linhasTabela.length > 2) {
+                linhasTabela[linhasTabela.length - 2].querySelectorAll('td').forEach(td => {
+                    td.style.borderBottom = '2px solid #000'; // Média
+                });
+            }
+
+            // Preparar para renderização com html2canvas
             const wrapper = document.createElement('div');
             wrapper.style.position = 'fixed';
             wrapper.style.top = '-10000px';
@@ -507,7 +795,6 @@
             wrapper.appendChild(clone);
             document.body.appendChild(wrapper);
 
-            // Aguarda as fontes carregarem e renderiza
             document.fonts.ready.then(() => {
                 html2canvas(clone, {
                     backgroundColor: '#fff',
@@ -515,9 +802,7 @@
                     scrollY: 0,
                     scrollX: 0,
                     useCORS: true,
-                    allowTaint: true,
-                    width: clone.offsetWidth,
-                    height: clone.offsetHeight
+                    allowTaint: true
                 }).then(canvas => {
                     const link = document.createElement('a');
                     link.download = 'rotulo-nutricional.png';
@@ -530,6 +815,9 @@
                 });
             });
         }
+
+
     </script>
 </body>
+
 </html>
